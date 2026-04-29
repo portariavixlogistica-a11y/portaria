@@ -1,25 +1,61 @@
 <!DOCTYPE html>
 <html>
-<body style="text-align:center;font-family:Arial">
+<head>
+  <meta charset="UTF-8">
+  <title>Portaria</title>
+</head>
+<body>
 
-<h1>PORTARIA</h1>
+<h2>Sistema de Chamados - Portaria</h2>
+
+<h3>DP</h3>
+<button onclick="chamar('DP',1)">🔴 Chamar DP</button>
+<button onclick="chamar('DP',0)">🟢 Finalizar DP</button>
+<br><br>
+
+<h3>RH</h3>
+<button onclick="chamar('RH',1)">🔴 Chamar RH</button>
+<button onclick="chamar('RH',0)">🟢 Finalizar RH</button>
+<br><br>
+
+<h3>MANUTENÇÃO</h3>
+<button onclick="chamar('MANUTENÇÃO',1)">🔴 Chamar MANUTENÇÃO</button>
+<button onclick="chamar('MANUTENÇÃO',0)">🟢 Finalizar MANUTENÇÃO</button>
+<br><br>
+
+<h3>NUTEC</h3>
+<button onclick="chamar('NUTEC',1)">🔴 Chamar NUTEC</button>
+<button onclick="chamar('NUTEC',0)">🟢 Finalizar NUTEC</button>
+<br><br>
+
+<h3>QSMS</h3>
+<button onclick="chamar('QSMS',1)">🔴 Chamar QSMS</button>
+<button onclick="chamar('QSMS',0)">🟢 Finalizar QSMS</button>
+<br><br>
+
+<h3>INFRAESTRUTURA</h3>
+<button onclick="chamar('INFRAESTRUTURA',1)">🔴 Chamar INFRAESTRUTURA</button>
+<button onclick="chamar('INFRAESTRUTURA',0)">🟢 Finalizar INFRAESTRUTURA</button>
+<br><br>
+
+<h3>SUPRIMENTOS</h3>
+<button onclick="chamar('SUPRIMENTOS',1)">🔴 Chamar SUPRIMENTOS</button>
+<button onclick="chamar('SUPRIMENTOS',0)">🟢 Finalizar SUPRIMENTOS</button>
+<br><br>
 
 <script>
 const url = "https://script.google.com/macros/s/AKfycbyLdy0Yt8u8SYOBjeUrkUtGup0ettfbGQJ1j6w2y650y56XIrOn4kCxELvBXsvUHXk/exec";
 
-function chamar(setor) {
-  fetch(url + "?setor=" + setor);
-  alert("Chamado enviado para " + setor);
+function chamar(setor, status) {
+  fetch(url + "?setor=" + setor + "&status=" + status);
+
+  if(status == 1){
+    alert("Chamado enviado para " + setor);
+  } else {
+    alert("Chamado FINALIZADO para " + setor);
+  }
 }
 </script>
-
-<button onclick="chamar('DP')">DP</button><br><br>
-<button onclick="chamar('RH')">RH</button><br><br>
-<button onclick="chamar('MANUTENÇÃO')">MANUTENÇÃO</button><br><br>
-<button onclick="chamar('NUTEC')">NUTEC</button><br><br>
-<button onclick="chamar('QSMS')">QSMS</button><br><br>
-<button onclick="chamar('INFRAESTRUTURA')">INFRAESTRUTURA</button><br><br>
-<button onclick="chamar('SUPRIMENTOS')">SUPRIMENTOS</button>
 
 </body>
 </html>
