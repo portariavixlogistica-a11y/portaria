@@ -4,56 +4,37 @@
   <meta charset="UTF-8">
   <title>Portaria</title>
 </head>
+
 <body>
 
-<h2>Sistema de Chamados - Portaria</h2>
+<h2>Sistema de Chamados</h2>
 
-<h3>DP</h3>
-<button onclick="chamar('DP',1)">🔴 Chamar DP</button>
-<button onclick="chamar('DP',0)">🟢 Finalizar DP</button>
+<button onclick="enviar('DP','abrir')">DP</button>
+<button onclick="enviar('RH','abrir')">RH</button>
+<button onclick="enviar('MANUTENCAO','abrir')">MANUTENÇÃO</button>
+<button onclick="enviar('NUTEC','abrir')">NUTEC</button>
+<button onclick="enviar('QSMS','abrir')">QSMS</button>
+<button onclick="enviar('INFRAESTRUTURA','abrir')">INFRAESTRUTURA</button>
+<button onclick="enviar('SUPRIMENTOS','abrir')">SUPRIMENTOS</button>
+
 <br><br>
 
-<h3>RH</h3>
-<button onclick="chamar('RH',1)">🔴 Chamar RH</button>
-<button onclick="chamar('RH',0)">🟢 Finalizar RH</button>
-<br><br>
-
-<h3>MANUTENÇÃO</h3>
-<button onclick="chamar('MANUTENÇÃO',1)">🔴 Chamar MANUTENÇÃO</button>
-<button onclick="chamar('MANUTENÇÃO',0)">🟢 Finalizar MANUTENÇÃO</button>
-<br><br>
-
-<h3>NUTEC</h3>
-<button onclick="chamar('NUTEC',1)">🔴 Chamar NUTEC</button>
-<button onclick="chamar('NUTEC',0)">🟢 Finalizar NUTEC</button>
-<br><br>
-
-<h3>QSMS</h3>
-<button onclick="chamar('QSMS',1)">🔴 Chamar QSMS</button>
-<button onclick="chamar('QSMS',0)">🟢 Finalizar QSMS</button>
-<br><br>
-
-<h3>INFRAESTRUTURA</h3>
-<button onclick="chamar('INFRAESTRUTURA',1)">🔴 Chamar INFRAESTRUTURA</button>
-<button onclick="chamar('INFRAESTRUTURA',0)">🟢 Finalizar INFRAESTRUTURA</button>
-<br><br>
-
-<h3>SUPRIMENTOS</h3>
-<button onclick="chamar('SUPRIMENTOS',1)">🔴 Chamar SUPRIMENTOS</button>
-<button onclick="chamar('SUPRIMENTOS',0)">🟢 Finalizar SUPRIMENTOS</button>
-<br><br>
+<button onclick="enviar('DP','finalizar')">Finalizar DP</button>
+<button onclick="enviar('RH','finalizar')">Finalizar RH</button>
+<button onclick="enviar('MANUTENCAO','finalizar')">Finalizar MANUTENÇÃO</button>
+<button onclick="enviar('NUTEC','finalizar')">Finalizar NUTEC</button>
+<button onclick="enviar('QSMS','finalizar')">Finalizar QSMS</button>
+<button onclick="enviar('INFRAESTRUTURA','finalizar')">Finalizar INFRAESTRUTURA</button>
+<button onclick="enviar('SUPRIMENTOS','finalizar')">Finalizar SUPRIMENTOS</button>
 
 <script>
-const url = "https://script.google.com/macros/s/AKfycbybca2Xxuly0C6sA6o2a1p1duiH9rUnSpJXDQdPHEYOwRuDWRsXzMFAIC7ecR85HPA/exec";
+function enviar(setor, acao) {
+  var url = "https://script.google.com/macros/s/AKfycbybca2Xxuly0C6sA6o2a1p1duiH9rUnSpJXDQdPHEYOwRuDWRsXzMFAIC7ecR85HPA/exec";
+  var link = url + "?setor=" + setor + "&acao=" + acao;
 
-function chamar(setor, status) {
-  fetch(url + "?setor=" + setor + "&status=" + status);
+  fetch(link, { method: "GET", mode: "no-cors" });
 
-  if(status == 1){
-    alert("Chamado enviado para " + setor);
-  } else {
-    alert("Chamado FINALIZADO para " + setor);
-  }
+  alert("Enviado: " + setor + " - " + acao);
 }
 </script>
 
